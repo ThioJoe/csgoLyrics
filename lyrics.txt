@@ -1,0 +1,4 @@
+Example line 1
+Example line 2
+Example line 3
+overwrite this file with whatever lyrics you want each time
