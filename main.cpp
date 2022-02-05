@@ -1,6 +1,5 @@
 /*
 Title:			CSGO Lyrics Script Generator
-
 Description:	Generates a cfg script based on a lyrics file that allows the player to
 			 	display the lyrics of any song line by line, using only one key bind.
 			 	
@@ -12,7 +11,9 @@ Comipling:		Compile with ISO C++11
 
 #include <cstdlib>
 #include <iostream>
+#ifdef _WIN32
 #include <windows.h>
+#endif
 #include <string>
 #include <fstream>
 #include <array>
@@ -21,7 +22,14 @@ Comipling:		Compile with ISO C++11
 using namespace std;
 
 int main(int argc, char** argv) {
+#ifdef _WIN32 || WIN32
     SetConsoleTitle("CSGO Lyrics Bind Generator");
+#elif __unix__
+    std::cout << "\033]0;" << "CSGO Lyrics Bind Generator" << "\007";
+#elif __mac__
+    system("title CSGO Lyrics Bind Generator");
+#endif
+
     ofstream myfile;
 	
 	//Initialize Variables
